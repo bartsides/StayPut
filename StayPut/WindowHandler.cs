@@ -51,18 +51,40 @@ namespace StayPut
         //};
 
         // Dual Monitor
+        //private static List<WindowSetting> userSettings = new List<WindowSetting>
+        //{
+        //    new WindowSetting("Spotify", null, -1920, 441, 800, 600),
+        //    new WindowSetting("Discord", null, -1920, 0, 940, 500),
+        //    new WindowSetting("Battle.net", "Friends", -571, 0, 320, 617),
+        //    new WindowSetting("steamwebhelper", "Friends List", -252, 0, 252, 617)
+        //};
+
+        // Dual Monitor - Horizontal Ultrawide
+        //private static List<WindowSetting> userSettings = new List<WindowSetting>
+        //{
+        //    new WindowSetting("chrome", null, 1130, -1080, 1448, 1048),
+        //    new WindowSetting("Spotify", null, 0, -640, 1138, 600),
+        //    new WindowSetting("Discord", null, 0, -1080, 818, 440),
+        //    new WindowSetting("steamwebhelper", "Friends List", 818, -1080, 320, 440),
+        //    new WindowSetting("slack", null, 10, -860, 724, 749),
+        //    new WindowSetting("Teams", null, 352, -1080, 786, 750)
+        //};
+
+        // Dual Monitor - 2k
         private static List<WindowSetting> userSettings = new List<WindowSetting>
         {
-            new WindowSetting("Spotify", null, -1920, 441, 800, 600),
-            new WindowSetting("Discord", null, -1920, 0, 940, 500),
-            new WindowSetting("Battle.net", "Friends", -571, 0, 320, 617),
-            new WindowSetting("steamwebhelper", "Friends List", -252, 0, 252, 617)
+            new WindowSetting("chrome", null, 1130, -1440, 1435, 1409),
+            new WindowSetting("firefox", null, 1130, -1440, 1435, 1409),
+            new WindowSetting("Spotify", null, 0, -825, 1136, 785),
+            new WindowSetting("Discord", null, 0, -1440, 819, 617),
+            new WindowSetting("steamwebhelper", "Friends List", 818, -1440, 318, 617),
+            new WindowSetting("Teams", null, 350, -1440, 786, 750)
         };
 
         internal static void HandleWindows()
         {
             ShowWindow(GetConsoleWindow(), SW_HIDE);
-            ManHandleConstantly();
+            ManHandle();
         }
 
         internal static void ManHandleConstantly()
