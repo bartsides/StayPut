@@ -11,14 +11,19 @@
 
         public WindowSetting() { }
 
-        public WindowSetting(string ProcessName, string WindowTitle, int X, int Y, int Width, int Height)
+        public WindowSetting(string processName, string windowTitle, int x, int y, int width, int height)
         {
-            this.ProcessName = ProcessName;
-            this.WindowTitle = WindowTitle;
-            this.X = X;
-            this.Y = Y;
-            this.Width = Width;
-            this.Height = Height;
+            this.ProcessName = processName;
+            this.WindowTitle = windowTitle;
+            this.X = x;
+            this.Y = y;
+            this.Width = width;
+            this.Height = height;
+        }
+
+        public WindowSetting(string processName, string windowTitle, Position position, Size size) :
+            this(processName, windowTitle, position.X, position.Y, size.X, size.Y)
+        {
         }
 
         public string Serialize()

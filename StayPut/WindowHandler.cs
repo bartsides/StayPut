@@ -70,14 +70,30 @@ namespace StayPut
         //    new WindowSetting("Teams", null, 352, -1080, 786, 750)
         //};
 
-        // Dual Monitor - 2k
+        //// Dual Monitor - 2k
+        //private static List<WindowSetting> userSettings = new List<WindowSetting>
+        //{
+        //    new WindowSetting("chrome", null, 1130, -1440, 1435, 1409),
+        //    new WindowSetting("firefox", null, 1130, -1440, 1435, 1409),
+        //    new WindowSetting("Spotify", null, 0, -825, 1136, 785),
+        //    new WindowSetting("Discord", null, 0, -1440, 819, 617),
+        //    new WindowSetting("steamwebhelper", "Friends List", 818, -1440, 318, 617),
+        //    new WindowSetting("Teams", null, 350, -1440, 786, 750)
+        //};
+
+        private static Position browserPosition = new Position(1128, -1440);
+        private static Size browserSize = new Size(1439, 1400);
+
+
+        // Dual Monitor - 2k - Docked Steam Chat
         private static List<WindowSetting> userSettings = new List<WindowSetting>
         {
-            new WindowSetting("chrome", null, 1130, -1440, 1435, 1409),
-            new WindowSetting("firefox", null, 1130, -1440, 1435, 1409),
-            new WindowSetting("Spotify", null, 0, -825, 1136, 785),
-            new WindowSetting("Discord", null, 0, -1440, 819, 617),
-            new WindowSetting("steamwebhelper", "Friends List", 818, -1440, 318, 617),
+            new WindowSetting("chrome", null, browserPosition, browserSize),
+            new WindowSetting("firefox", null, browserPosition, browserSize),
+            new WindowSetting("brave", null, browserPosition, browserSize),
+            new WindowSetting("Spotify", null, 0, -825, 1136, 778),
+            new WindowSetting("Discord", null, 0, -1440, 1136, 616),
+            new WindowSetting("steamwebhelper", "Friends List", 0, -825, 1136, 785),
             new WindowSetting("Teams", null, 350, -1440, 786, 750)
         };
 
@@ -162,8 +178,11 @@ namespace StayPut
         {
             if (!process.ProcessName.Equals(setting.ProcessName))
                 return false;
-            if (setting.WindowTitle != null && !setting.WindowTitle.Equals(GetWindowTitle(new HandleRef(process, process.MainWindowHandle))))
+
+            var windowTitle = GetWindowTitle(new HandleRef(process, process.MainWindowHandle));
+            if (setting.WindowTitle != null && (windowTitle == null || !windowTitle.Contains(setting.WindowTitle)))
                 return false;
+
             return true;
         }
 
