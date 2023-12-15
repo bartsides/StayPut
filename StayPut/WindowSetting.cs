@@ -21,6 +21,11 @@
             this.Height = height;
         }
 
+        public WindowSetting(string processName, string windowTitle, Zone zone) : 
+            this(processName, windowTitle, zone.Position, zone.Size)
+        {            
+        }
+
         public WindowSetting(string processName, string windowTitle, Position position, Size size) :
             this(processName, windowTitle, position.X, position.Y, size.X, size.Y)
         {
@@ -31,8 +36,7 @@
             return $"new {this.GetType().Name}(\"{ProcessName}\", \"{WindowTitle}\", {X}, {Y}, {Width}, {Height})";
         }
 
-        override
-        public string ToString()
+        public override string ToString()
         {
             return $"Process: '{ProcessName}'({WindowTitle}) ({X},{Y}) {Width}x{Height}";
         }

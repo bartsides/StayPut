@@ -4,7 +4,7 @@ namespace StayPut
 {
     class Program
     {
-        [STAThreadAttribute]
+        [STAThread]
         static void Main()
         {
             WindowHandler.HandleWindows();

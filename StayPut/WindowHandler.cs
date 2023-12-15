@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace StayPut
@@ -81,20 +81,21 @@ namespace StayPut
         //    new WindowSetting("Teams", null, 350, -1440, 786, 750)
         //};
 
-        private static Position browserPosition = new Position(1128, -1440);
-        private static Size browserSize = new Size(1439, 1400);
-
+        private static Zone browserZone = new Zone(new Position(1128, -1440), new Size(1439, 1400));
+        private static Zone topLeftZone = new Zone(new Position(0, -1440), new Size(1136, 616));
+        private static Zone bottomLeftZone = new Zone(new Position(0, -825), new Size(1136, 778));
+        private static Zone floatingZone = new Zone(new Position(350, -1440), new Size(786, 750));
 
         // Dual Monitor - 2k - Docked Steam Chat
         private static List<WindowSetting> userSettings = new List<WindowSetting>
         {
-            new WindowSetting("chrome", null, browserPosition, browserSize),
-            new WindowSetting("firefox", null, browserPosition, browserSize),
-            new WindowSetting("brave", null, browserPosition, browserSize),
-            new WindowSetting("Spotify", null, 0, -825, 1136, 778),
-            new WindowSetting("Discord", null, 0, -1440, 1136, 616),
-            new WindowSetting("steamwebhelper", "Friends List", 0, -825, 1136, 785),
-            new WindowSetting("Teams", null, 350, -1440, 786, 750)
+            new WindowSetting("chrome", null, browserZone),
+            new WindowSetting("firefox", null, browserZone),
+            new WindowSetting("brave", null, browserZone),
+            new WindowSetting("Spotify", null, bottomLeftZone),
+            new WindowSetting("Discord", null, topLeftZone),
+            new WindowSetting("steamwebhelper", "Friends List", bottomLeftZone),
+            new WindowSetting("Teams", null, floatingZone)
         };
 
         internal static void HandleWindows()
