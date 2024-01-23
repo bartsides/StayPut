@@ -1,4 +1,6 @@
-﻿namespace StayPut
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace StayPut
 {
     public struct Zone(string name, int x, int y, int width, int height, List<Window> windows)
     {
@@ -9,20 +11,32 @@
         public int Height { get; set; } = height;
         public List<Window> Windows { get; set; } = windows;
 
-        //public string Serialize()
-        //{
-        //    var result = "";
-        //    foreach (var win in Windows)
-        //    {
-        //        result +=
-        //    }
-        //    return $"new {GetType().Name}(\"{ProcessName}\", \"{WindowTitle}\", {X}, {Y}, {Width}, {Height})";
-        //}
+        public override bool Equals([NotNullWhen(true)] object obj)
+        {
+            if (obj is Zone zone)
+            {
+                return zone.X == X &&
+                    zone.Y == Y &&
+                    zone.Width == Width &&
+                    zone.Height == Height;
+            }
 
-        //override
-        //public string ToString()
-        //{
-        //    return $"Process: '{ProcessName}'({WindowTitle}) ({X},{Y}) {Width}x{Height}";
-        //}
+            return false;
+        }
+
+        public static bool operator ==(Zone left, Zone right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Zone left, Zone right)
+        {
+            return !(left == right);
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

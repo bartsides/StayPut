@@ -2,9 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/StayPut
-/StayPut/bin/Debug
-/StayPut/obj/Debug
-/bin/Debug/net8.0
-/.vs/ProjectEvaluation
+/.vs
+/bin
 /obj

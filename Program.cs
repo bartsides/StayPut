@@ -2,10 +2,11 @@
 {
     internal class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             var stayPut = new StayPut();
-            stayPut.HandleWindows();
+            stayPut.MoveWindowsOnce();
         }
     }
 }
