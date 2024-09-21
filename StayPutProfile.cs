@@ -1,7 +1,8 @@
 ﻿namespace StayPut
 {
-    public class StayPutProfile(List<Zone> zones)
+    public class StayPutProfile(List<Layout> layouts)
     {
-        public List<Zone> Zones { get; set; } = zones;
+        public int LastIndex { get; set; } = 0;
+        public List<Layout> Layouts { get; set; } = layouts;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace StayPut
 {
-    public struct Zone(string name, int x, int y, int width, int height, List<Window> windows)
+    public class Zone(string name, int x, int y, int width, int height, List<Window> windows)
     {
         public string Name { get; set; } = name;
         public int X { get; set; } = x;
@@ -26,6 +26,7 @@ namespace StayPut
 
         public static bool operator ==(Zone left, Zone right)
         {
+            if (left == null || right == null) return false;
             return left.Equals(right);
         }
 
