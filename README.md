@@ -1,2 +1,2 @@
 # StayPut
-C# app that forces windows to stay put.
+A windows app that puts windows back where you'd like them written in C#.
